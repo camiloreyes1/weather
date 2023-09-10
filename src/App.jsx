@@ -3,6 +3,7 @@ import './App.css'
 
 function App() {
 
+  
   fetch('https://weatherapi-com.p.rapidapi.com/current.json?q=53.1%2C-0.13', {
     "method":"GET",
     "headers": {
@@ -11,7 +12,7 @@ function App() {
     }
   })
  
-.then(response => { 
+  .then(response => { 
   console.log(response.json())
 })
 
@@ -19,12 +20,17 @@ function App() {
   console.log(err);
 })
 
+const [endPoint, setEndPoint] = useState('')
+const onChangeHandler = (e) => {
+  setEndPoint(e.target.value)
+}
+
   return (
     <div>
 
       <form>
-        
-        <input type='text' />
+
+        <input type='text' value={endPoint} onChange={onChangeHandler} />
         <button type='submit'>Submit</button>
 
       </form>
