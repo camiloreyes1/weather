@@ -33,7 +33,7 @@ const Weather = () => {
     return (
 
         <div>
-          <p>Location: {response.location.name} </p>
+          <p>Location: {response.location.name}  </p>
           {/* <p>Temperature: {response.current.temp_f}°C</p>          */}
         </div>
     )
