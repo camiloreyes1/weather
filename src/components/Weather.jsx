@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Search from './Search';
 import axios from 'axios';
 
 const Weather = () => {
@@ -12,7 +13,7 @@ const Weather = () => {
                     'X-RapidAPI-Key': 'c12851fd20msh21d808cb922c788p103241jsn91fe9186b684',
                     'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
                 },
-                params: { q: '25.77,-80.19' },
+                params: { q: {city} },
             });
 
             setResponse(res.data);
@@ -33,7 +34,8 @@ const Weather = () => {
     return (
 
         <div>
-
+            
+        <Search city={city} />
           <h4>Location: {response.location.name}, {response.location.region}, {response.location.country} </h4>
           <p>Temperature: {response.current.temp_f} °F,  {response.current.temp_c} °C</p>
           <p>Humidity: {response.current.humidity} </p>

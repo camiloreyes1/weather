@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 const Search = () => {
 
-const [data, setData] = useState([])
+const [city, setCity] = useState('')
 
   const search  = async () => {
     try {
@@ -26,13 +26,19 @@ const [data, setData] = useState([])
     }
 
     useEffect(() => {
-      search
+      search()
     },[])
   };
 
+  const textHandler = event => setCity(event.target.value); 
+  
   return (
-    <div>Search</div>
+    <div>
+      <input placeholder='Type city or zip code'
+      type="text" value={city} onChange={textHandler}></input>
+    </div>
   )
 }
 
 export default Search
+
