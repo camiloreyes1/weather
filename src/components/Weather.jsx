@@ -12,7 +12,7 @@ const Weather = () => {
                     'X-RapidAPI-Key': 'c12851fd20msh21d808cb922c788p103241jsn91fe9186b684',
                     'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
                 },
-                params: { q: '53.1,-0.13' },
+                params: { q: '25.77,-80.19' },
             });
 
             setResponse(res.data);
@@ -34,7 +34,9 @@ const Weather = () => {
 
         <div>
           <p>Location: {response.location.name}  </p>
-          {/* <p>Temperature: {response.current.temp_f}°C</p>          */}
+          <p>Current Temperature: {response.current.temp_f} F</p>
+          <p>Current Temperature: {response.current.temp_c} C</p>
+          <img src={response.current.condition.icon}/>
         </div>
     )
 };
