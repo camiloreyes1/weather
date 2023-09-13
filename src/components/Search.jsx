@@ -5,12 +5,15 @@ import Weather from './Weather';
 const Search = () => {
 
 const [city, setCity] = useState('')
+const [lat, setLat] = useState('')
+const [lon, setLon] = useState('')
+
 
 
   const search  = async () => {
     try {
       const res = await axios.get(
-        `https://weatherapi-com.p.rapidapi.com/search.json`,
+        `https://weatherapi-com.p.rapidapi.com/search.jsonq=${city}`,
         {
           headers: {
             'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com',
@@ -21,6 +24,9 @@ const [city, setCity] = useState('')
       );
 
       setData(res.data)
+      setLat(res.data.location.lat)
+      setLon(res.data.location.lon)
+
       console.log(res.data)
       
     } catch (err) {
@@ -39,7 +45,8 @@ const [city, setCity] = useState('')
       
       <input placeholder='Type city or zip code'
       type="text" value={city} onChange={textHandler}></input>
-      <Weather city={city} />
+
+      <Weather lan={lan} lon={lon} />
 
     </div>
   )

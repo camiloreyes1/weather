@@ -3,7 +3,7 @@ import Search from './Search';
 import axios from 'axios';
 
 
- const Weather = () => {
+ const Weather = (props) => {
 
     //  the actual    temp variable the set variable is what is changing
     const [response, setResponse] = useState(null);
@@ -52,7 +52,7 @@ import axios from 'axios';
         
         {/* <Search/> */}
         
-        <h4>Location: {response.location.name}, {response.location.region}, {response.location.country} </h4>
+        <h4>Location: {props.response.location.name}, {response.location.region}, {response.location.country} </h4>
 
         <p>Temperature: {response.current.temp_f} °F,  {response.current.temp_c} °C</p>
 
