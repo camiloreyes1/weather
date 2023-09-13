@@ -5,7 +5,6 @@ import Search from './components/Search'
 const App = () => {
   return (
 	<div>
-    {/* <Search/> */}
     <Weather/>
   </div>
   )

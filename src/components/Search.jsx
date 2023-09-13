@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import Weather from './Weather';
 
 const Search = () => {
 
 const [city, setCity] = useState('')
+
 
   const search  = async () => {
     try {
@@ -34,8 +36,11 @@ const [city, setCity] = useState('')
   
   return (
     <div>
+      
       <input placeholder='Type city or zip code'
       type="text" value={city} onChange={textHandler}></input>
+      <Weather city={city} />
+
     </div>
   )
 }
