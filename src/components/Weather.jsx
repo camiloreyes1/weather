@@ -33,10 +33,14 @@ const Weather = () => {
     return (
 
         <div>
-          <p>Location: {response.location.name}  </p>
-          <p>Current Temperature: {response.current.temp_f} F</p>
-          <p>Current Temperature: {response.current.temp_c} C</p>
+
+          <h4>Location: {response.location.name}, {response.location.region}, {response.location.country} </h4>
+          <p>Temperature: {response.current.temp_f} °F,  {response.current.temp_c} °C</p>
+          <p>Humidity: {response.current.humidity} </p>
+          <p>Time Zone: {response.location.tz_id}</p>
+          <p>{response.current.condition.text}</p>
           <img src={response.current.condition.icon}/>
+
         </div>
     )
 };
