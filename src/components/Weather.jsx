@@ -3,12 +3,10 @@ import Search from './Search';
 import axios from 'axios';
 
 
- const Weather = (props) => {
+ const Weather = ({ name }) => {
 
     //  the actual    temp variable the set variable is what is changing
     const [response, setResponse] = useState(null);
-    const [lat, setLat] = useState('');
-    const [lon, setLon] = useState('');
 
     const fetchWeater = async () => {
 
@@ -18,14 +16,8 @@ import axios from 'axios';
                     'X-RapidAPI-Key': 'c12851fd20msh21d808cb922c788p103241jsn91fe9186b684',
                     'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
                 },
-                params: { q: '25.77,-80.19' },
+                params: { q: `${name}` },
             });
-
-            setLat(res.data.location.lat)
-            console.log(res.data.location.lat)
-
-            setLon(res.data.location.lon)
-            console.log(res.data.location.lon)
 
             setResponse(res.data);
             console.log(res.data);
@@ -36,12 +28,10 @@ import axios from 'axios';
     };
 
     useEffect(() => {
+    console.log("Weather Name ===> ",name)
     fetchWeater();
 
         },[])
-
-
-    
 
     return (
 
@@ -50,9 +40,7 @@ import axios from 'axios';
 
         <>
         
-        {/* <Search/> */}
-        
-        <h4>Location: {props.response.location.name}, {response.location.region}, {response.location.country} </h4>
+        <h4>Location: {response.location.name}, {response.location.region}, {response.location.country} </h4>
 
         <p>Temperature: {response.current.temp_f} °F,  {response.current.temp_c} °C</p>
 
