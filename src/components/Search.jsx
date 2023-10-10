@@ -5,8 +5,8 @@ import City from './City';
 
 const Search = () => {
   const [city, setCity] = useState('');
-  const [cities, setCities] =useState(null)
-  const [name, setName] =useState("")
+  const [cities, setCities] = useState(null)
+  const [name, setName] = useState("")
   const [visible, setVisibility] = useState(true)
 
   const options = {
@@ -14,7 +14,7 @@ const Search = () => {
     url: 'https://weatherapi-com.p.rapidapi.com/search.json',
     params: { q: `${city}` },
     headers: {
-      'X-RapidAPI-Key': 'c653db3d66msh51a730c880982cfp1b9ff5jsn7f8a1b1556f8',
+      'X-RapidAPI-Key': '6bf2e8c221mshd37db1dd6649100p167a91jsnd687b3c279fe',
       'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
     },
   };
@@ -28,14 +28,15 @@ const Search = () => {
       console.error(error);
     }
   };
+
   useEffect(() => {
 
     search();
     console.log('City ===>', city);
-  }, [city]); 
+  }, [city]);
 
 
-  const bringBack =() =>{
+  const bringBack = () => {
     setVisibility(true)
     setName("")
   }
@@ -43,7 +44,7 @@ const Search = () => {
   const textHandler = (event) => {
     setCity(event.target.value);
     console.log('city ==>', city);
-    if(cities && !visible){
+    if (cities && !visible) {
       bringBack();
     }
   };
@@ -57,7 +58,7 @@ const Search = () => {
         onChange={textHandler}
       ></input>
 
-    {cities && visible ? (
+      {cities && visible ? (
         <div>
           <h1>Cities</h1>
           {cities.map((c) => (
@@ -65,7 +66,7 @@ const Search = () => {
           ))}
         </div>
       ) : (
-        <h1>No cities</h1>
+        <h1> </h1>
       )}
       {name && <Weather name={name} />}
     </div>
