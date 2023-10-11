@@ -4,9 +4,9 @@ import Search from './components/Search'
 
 const App = () => {
   return (
-	<div>
+	<div className='bg-slate-900'>
     <Search/>
-    </div>
+  </div>
   )
 }
 

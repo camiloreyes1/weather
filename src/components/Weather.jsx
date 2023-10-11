@@ -45,20 +45,26 @@ const Weather = ({ name }) => {
     }, [name])
 
     return (
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             {response && astroResponse ? (
                 <>
 
                     <a class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <h4>Location: {response.location.name}, {response.location.region}, {response.location.country} </h4>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {response.location.name}, {response.location.region}, {response.location.country}</h5>
                         <p>Temperature: {response.current.temp_f} °F,  {response.current.temp_c} °C</p>
                         <p>Humidity: {response.current.humidity} </p>
-                        <p>Time Zone: {response.location.tz_id}</p>
-                        <p>{response.current.condition.text}</p>
-                        <img src={response.current.condition.icon} />
-
+                        <p>Condition: {response.current.condition.text}</p>
+                        <br></br>
                         <p>Sunrise: {astroResponse.astronomy.astro.sunrise}</p>
+                        <p>Sunset: {astroResponse.astronomy.astro.sunset}</p>
+                        <p>Moon Phase: {astroResponse.astronomy.astro.moon_phase} </p>
+
+                        <img src={response.current.condition.icon} />
                     </a>
+                    <br>
+                    </br>  
+
+                    
 
                 </>
             ) : (
